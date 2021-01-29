@@ -7,7 +7,12 @@ export default class TodoList extends LightningElement {
     // a new array to filteredTodos, the track decorator is not required.
     filteredTodos = [];
 
-    _todos = [];
+    _todos = [
+        { id: 1, description: 'Explore recipes', priority: false },
+        { id: 2, description: 'Install Ebikes sample app', priority: false },
+        { id: 2, description: 'Show app ', priority: true }
+
+    ];
 
     priorityFilter = false;
 
@@ -32,6 +37,9 @@ export default class TodoList extends LightningElement {
 
     handleCheckboxChange(event) {
         this.priorityFilter = event.target.checked;
+        this.filterTodos();
+    }
+    connectedCallback() {
         this.filterTodos();
     }
 }
